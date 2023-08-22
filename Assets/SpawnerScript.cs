@@ -11,16 +11,15 @@ public class SpawnerScript : MonoBehaviour
     void Start()
     {
         width = Camera.main.orthographicSize * Camera.main.aspect;
-        height = height * Camera.main.aspect;
+        height = Camera.main.orthographicSize + 1;
 
-        InvokeRepeating("respawn", 0,1);
+        InvokeRepeating("respawn",0.1f,1f);
     }
     
     void respawn()
     {
         float x = Random.Range(-height, height);
-        Debug.Log(x);
-        Vector2 pos = new Vector2(x, height + 2);
+        Vector2 pos = new Vector2(x, height);
         Instantiate(enemy, pos, Quaternion.identity);
     }
 
