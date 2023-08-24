@@ -1,19 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.PlayerSettings;
 
 public class NaveMovement : MonoBehaviour
 {
     private Rigidbody2D rbd;
     public int vel;
+    private AudioSource sound;
+
     private float heigth;
     private float width;
     private float altPc;
+    public GameObject shot;
 
     // Start is called before the first frame update
     void Start()
     {
         rbd = this.GetComponent<Rigidbody2D>();
+        sound = this.GetComponent<AudioSource>();
         vel = 10;
         heigth = Camera.main.orthographicSize; // Pega a altura da camera e atribui a uma variavel
         width = heigth * Camera.main.aspect; // Pega a largura da camera e atribui a uma variavel
@@ -44,6 +49,16 @@ public class NaveMovement : MonoBehaviour
         else if (this.transform.position.y > 0f)
         {
             this.transform.position = new Vector2(this.transform.position.x, 0f);
+        }
+
+        // Lógica do tiro
+        if (Input.GetKeyDown(KeyCode.Space) || 
+            Input.GetMouseButtonDown(0)) 
+        {
+            sound.Play();
+            Vector2 pos = new Vector2(transform.position.x, 
+                                      transform.position.y + altPc);  
+            Instantiate(shot, pos, Quaternion.identity);
         }
     }
 }
