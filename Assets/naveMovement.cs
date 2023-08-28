@@ -27,6 +27,11 @@ public class NaveMovement : MonoBehaviour
         altPc = sr.bounds.size.y / 2; // Pega metade do tamanho da nave
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        
+    }
+
     // Update is called once per frame
     void Update()
     {

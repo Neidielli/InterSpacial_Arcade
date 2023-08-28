@@ -15,6 +15,20 @@ public class EvilShipMovement : MonoBehaviour
         this.rbd.velocity = new Vector2(0, vel);
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+
+        if (collision.tag == "shot")
+        {
+            Destroy(collision.gameObject);
+            Destroy(this.gameObject);
+        } else
+        {
+            Destroy(collision.gameObject);
+        }
+            
+        
+    }
     // Update is called once per frame
     void Update()
     {

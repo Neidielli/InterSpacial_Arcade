@@ -16,6 +16,11 @@ public class Shot : MonoBehaviour
         this.rbd.velocity = new Vector2(0, vel);
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Destroy(collision.gameObject);
+    }
+
     // Update is called once per frame
     void Update()
     {
