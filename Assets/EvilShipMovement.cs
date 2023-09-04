@@ -20,14 +20,16 @@ public class EvilShipMovement : MonoBehaviour
 
         if (collision.tag == "shot")
         {
+            scriptScore.addScore(5); 
             Destroy(collision.gameObject);
             Destroy(this.gameObject);
         } else
         {
             Destroy(collision.gameObject);
         }
-            
-        
+        // Destroi a nave inimiga quando há colisões
+        Destroy(this.gameObject);
+
     }
     // Update is called once per frame
     void Update()
