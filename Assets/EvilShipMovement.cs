@@ -25,7 +25,8 @@ public class EvilShipMovement : MonoBehaviour
             Destroy(this.gameObject);
         } else
         {
-            Destroy(collision.gameObject);
+            scriptScore.decreaseLife(5);
+            // Destroy(collision.gameObject);
         }
         // Destroi a nave inimiga quando há colisões
         Destroy(this.gameObject);
